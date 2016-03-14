@@ -3,7 +3,7 @@
     <head>
         <link rel="stylesheet" href="libs/bootstrap/dist/css/bootstrap.css">
     </head>
-    <body ng-app="app" ng-controller="c1">
+    <body ng-app="app" ng-controller="c1" id='c1'>
     <div class="container">
         <form>
             <div class="form-group">
@@ -14,16 +14,29 @@
                 <label>Last Name</label>
                 <input class="form-control" ng-model="nc1.lastName">
             </div>
-            <button class="btn btn-primay" ng-click="addC1(nc1)">Submit</button>
+            <div class="form-group">
+                <label>Email</label>
+                <input class="form-control" ng-model="nc1.email">
+            </div>
+            <button class="btn btn-primay" ng-click="addC1(nc1)" ng-hide="button.submit">Submit</button>
+            <button class="btn btn-primay" ng-click="updateC1(nc1)" ng-hide="button.update">Update</button>
         </form>
         <table class="table table-striped">
-            <tr><th>First Name</th><th>Last Name</th></tr>
-            <tr ng-repeat="c1 in c1s">
+            <tr>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Email</th>
+                <th>action</th>
+            </tr>
+            <tr ng-repeat="c1 in c1s" ng-click="select(c1)">
                 <td>{{c1.firstName}}</td>
                 <td>{{c1.lastName}}</td>
+                <td>{{c1.email}}</td>
+                <td><button ng-click="delC1(c1)" class="btn btn-danger">Delete</button></td>
             </tr>
         </table>
     </div>
+        <script src="libs/underscore/underscore.js"></script>
         <script src="libs/angular/angular.js"></script>
         <script src="app.js"></script>
     </body>
